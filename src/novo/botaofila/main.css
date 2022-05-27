@@ -1,0 +1,11 @@
+.atual{
+    background-color: white;
+    color: black;
+    text-shadow: 1px 1px blue;
+}
+.velha{
+    background-color: #F5FFFA;
+    color: black;
+    text-shadow: 1px 1px blue;
+}
+
