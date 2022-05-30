@@ -34,16 +34,17 @@ console.log("conectado tabela",table);
 // }
 console.log("1",req.query);
 console.log("2",req.query.$filter);
+console.log("2a",req.query.$orderby);
 console.log("3",filter);
 console.log("4",filter.parameters);
+    if (req.query.$orderby) {filter.orderby=req.query.$orderby;}
     if (req.query.$top) {filter.limit=parseInt(req.query.$top);}
     if (req.query.$skip && req.query.$skip != '0') {filter.skip=parseInt(req.query.$skip);}
     connection.query(filter.from(table), filter.parameters, function(err, result){
       console.log("err",err);
       console.log("result",result);
-
-console.log(result);
-  res.json(result);
+      console.log(result);
+      res.json(result);
     });
 }
 
