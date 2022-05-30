@@ -52,8 +52,8 @@ function Logar(){
 	},[deletar])
 
 
-function mandar(id_dos_atendentes, id_das_filas){
-		console.log("mandar",id_dos_atendentes,id_das_filas);
+function mandar(id_dos_atendentes, id_fila){
+		console.log("mandar",id_dos_atendentes,id_fila);
 				const opa = {
 		
 					method: 'post',
@@ -61,7 +61,7 @@ function mandar(id_dos_atendentes, id_das_filas){
 					body: JSON.stringify({
 
 						id_atendentes: id_dos_atendentes,
-						id_filas: id_das_filas
+						id_fila: id_fila
 
 					})
 				}

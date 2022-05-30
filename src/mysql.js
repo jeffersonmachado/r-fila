@@ -1,4 +1,4 @@
-var createFilter = require('odata-v4-mysql').createFilter;
+createFilter = require('odata-v4-mysql').createFilter;
 var createQuery = require('odata-v4-mysql').createQuery;
 var cors = require("cors");
 var express = require('express'),
@@ -13,7 +13,7 @@ var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'resu1@@dba',
+  password : '',
   database : 'jefferson',
   port : 3306
 });
@@ -34,16 +34,17 @@ console.log("conectado tabela",table);
 // }
 console.log("1",req.query);
 console.log("2",req.query.$filter);
+console.log("2a",req.query.$orderby);
 console.log("3",filter);
 console.log("4",filter.parameters);
+    if (req.query.$orderby) {filter.orderby=req.query.$orderby;}
     if (req.query.$top) {filter.limit=parseInt(req.query.$top);}
     if (req.query.$skip && req.query.$skip != '0') {filter.skip=parseInt(req.query.$skip);}
     connection.query(filter.from(table), filter.parameters, function(err, result){
       console.log("err",err);
       console.log("result",result);
-
-console.log(result);
-  res.json(result);
+      console.log(result);
+      res.json(result);
     });
 }
 
@@ -253,8 +254,8 @@ app.post("/api/atendentes", function(req, res) {
 app.post("/api/iniciaratendimento", function(req, res) {
   adiciona_tabela(connection,"iniciaratendimento",req,res);
 });
-app.delete("/api/fila/:id_das_filas", function(req, res) {
-    var cond = { "id_das_filas" : req.params.id_das_filas }
+app.delete("/api/fila/:id_fila", function(req, res) {
+    var cond = { "id_fila" : req.params.id_fila }
     console.log("delete fila",cond);
     // console.log("id_das_filas",id_das_filas);
   console.log("req params",req.params);
@@ -262,8 +263,8 @@ app.delete("/api/fila/:id_das_filas", function(req, res) {
 
   deleta_tabela(connection,"fila",cond,req,res);
 });
-app.put("/api/fila/:id_das_filas", function(req, res) {
-    var cond = { "id_das_filas" : req.params.id_das_filas }
+app.put("/api/fila/:id_fila", function(req, res) {
+    var cond = { "id_fila" : req.params.id_fila }
     console.log("put fila",cond);
     // console.log("id_das_filas",id_das_filas);
   console.log("req params",req.params);

@@ -19,7 +19,7 @@ function Loko(){
     let data = new Date();
     const meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul","Ago","Set","Out","Nov","Dez"];
 
-    var contador = useState(contador);
+    var senha = useState(senha);
     
     console.log("aqui", configData.API_URL );
     
@@ -59,26 +59,26 @@ function Loko(){
     return true;
   };
     
-  async function contador2(id_das_filas, nome_da_fila, contador) {
+  async function contador2(id_fila, nome_da_fila, senha) {
     try {
-      var url = configData.API_URL+"/api/fila?$filter=id_das_filas eq " + id_das_filas;
+      var url = configData.API_URL+"/api/fila?$filter=id_fila eq " + id_fila;
       console.log("url",url);
       var fetchResponse  = await fetch(url);
       const ultimo = await fetchResponse.json();
       console.log(Object.keys(ultimo));
-      var contador = ultimo[0].contador;
+      var senha = ultimo[0].senha;
       var nome_da_fila = ultimo[0].nome_da_fila;
-      contador++;
-      console.log(contador + "este é ocontador");
+      senha++;
+      console.log(senha + "este é ocontador");
       const bomba = {
         method: 'put',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          contador: contador
+          senha: senha
         })
       }
-      printIframe(contador);
-      fetch(configData.API_URL+"/api/fila/" + id_das_filas, bomba)
+      printIframe(senha);
+      fetch(configData.API_URL+"/api/fila/" + id_fila, bomba)
       .then(res => res.json())
       .then(
       (result) => {
@@ -86,9 +86,9 @@ function Loko(){
           method: 'post',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            id_das_filas: id_das_filas,
+            id_das_filas: id_fila,
             datatime: data.getDate() + "/" + meses[(data.getMonth())]  + "/" + data.getFullYear() + "  " + data.getHours() + ":" + data.getMinutes() + ":" + data.getSeconds(),
-            contador: contador,
+            contador: senha,
             nome_fila: nome_da_fila,
           })
         }
@@ -141,7 +141,7 @@ function Loko(){
                   style={{fontSize: 80}}
                   size="lg" 
                   className="w-100 mt-3" 
-                  onClick={() => {contador2(item.id_das_filas, item.id, item.nome_da_fila, item.contador)} }>
+                  onClick={() => {contador2(item.id_fila, item.id, item.nome_da_fila, item.senha)} }>
                 {item.nome_da_fila}
                 </Button>
               </div>

@@ -20,7 +20,7 @@ function Patrao(bora, id_dos_atendentes, id_atendimento){
 	const [modal, setModal] = useState(false);
 
 	const [atendimento, setAtendimento] = useState([]);
-	const [fila, setFila] = useState([]);
+
 	
 	var props3 = modalIsOpenThiago;
 	var props2 = modal;
@@ -38,62 +38,43 @@ function Patrao(bora, id_dos_atendentes, id_atendimento){
 	const [guiche, setGuiche] = useState("");
 
 
-	useEffect( async () => {
+	useEffect(async () => {
+		console.log("atendente",atendente);
+		var id_atendentes = '2';
+		var url = configData.API_URL+"/api/atendentes_fila?$filter=id_atendentes eq " + id_atendentes;
+		console.log("url",url);
+		var fetchResponse  = await fetch(url);
+		const filas_do_atendente = await fetchResponse.json();
+		console.log("filas_do_atendente",filas_do_atendente);
+		var filas =[];
+		filas_do_atendente.forEach(obj => {
+			filas.push(obj.id_filas);
+			console.log("obj",obj.id_filas);
+			console.log('-------------------');
+		});
+		var filtro= "(";
+		filas.forEach((filaAtual) => {
+			filtro+="id_das_filas eq '"+filaAtual+"' or ";
+		});
+		filtro = filtro.slice(0, -4);
+		filtro+=")";
+		console.log("filtro",filtro);
+		url = configData.API_URL+"/api/atendimento?$filter=status1 ne 'Finalizado' and "+filtro;
+		console.log("filtrossssssssssssssss",filtro);
+			fetch(url)
+			.then(res => res.json())
+			.then(
+			(result) => {
+				setAtendimento(result);
+				console.log(result);
+			},
+			(error) => {
+				setIsLoaded(true);
+				setError(error);
+			}
+			)
 
-		var url2 = configData.API_URL+"/api/atendentes";
-		fetch(url2)
-		.then(res => res.json())
-		.then(
-		  (result) => {
-			setAtendentess(result);
-			console.log(result);
-		  },
-		  (error) => {
-			setIsLoaded(true);
-			setError(error);
-		  }
-		)
-	  console.log("useEffect");
-		},[])
-
-	
-		useEffect(async () => {
-			console.log("atendente",atendente);
-			var id_atendentes = '2';
-			var url = configData.API_URL+"/api/atendentes_fila?$filter=id_atendentes eq " + id_atendentes;
-			console.log("url",url);
-			var fetchResponse  = await fetch(url);
-			const filas_do_atendente = await fetchResponse.json();
-			console.log("filas_do_atendente",filas_do_atendente);
-			var filas =[];
-			filas_do_atendente.forEach(obj => {
-				filas.push(obj.id_filas);
-				console.log("obj",obj.id_filas);
-				console.log('-------------------');
-			});
-			var filtro= "(";
-			filas.forEach((filaAtual) => {
-				filtro+="id_das_filas eq '"+filaAtual+"' or ";
-			});
-			filtro = filtro.slice(0, -4);
-			filtro+=")";
-			console.log("filtro",filtro);
-			url = configData.API_URL+"/api/atendimento?$filter=status1 ne 'Finalizado' and "+filtro;
-			console.log("filtrossssssssssssssss",filtro);
-				fetch(url)
-				.then(res => res.json())
-				.then(
-				(result) => {
-					setAtendimento(result);
-					console.log(result);
-				},
-				(error) => {
-					setIsLoaded(true);
-					setError(error);
-				}
-				)
-	
-			},[caio]);
+		},[caio]);
 
 
 function  ValidarUsuario(){
@@ -486,7 +467,7 @@ function avisa(id){
 											
 						<button onClick={() => ValidarUsuario() } className="btn btn-lg btn btn-success btn-block mt-4" type="button">Logar</button>
 						
-						<Modal className="revoada mt-5" isOpen={!!props3} onRequestClose={props3.clearSelectedOption} ariaHideApp={false} contentLabel="props3">
+						<Modal className="mt-5" isOpen={!!props3} onRequestClose={props3.clearSelectedOption} ariaHideApp={false} contentLabel="props3">
 						
 							<button onClick={() => abreModal() }  className='form-control btn btn-success mb-5 mt-2'>Próximo Atendimento</button>
 						
@@ -494,55 +475,57 @@ function avisa(id){
 								<button className='btn btn-warning form-control mb-3' onClick={() => pausar(gigi.id_dos_atendentes) } type='submit'>Pausar</button>
 							)}
 		
-							<Modal id='b' isOpen={!!props2} onRequestClose={props2.clearSelectedOption} ariaHideApp={false} contentLabel="props2">
+							<Modal isOpen={!!props2} onRequestClose={props2.clearSelectedOption} ariaHideApp={false} contentLabel="props2">
 							<div className='tutuu'>
 							<h2 className='text-center'>Lista de Espera</h2>
-							<table className='table'>
-								<thead>
-									<tr className='text-center'>
-										<th>id</th>
-										<th>data e hora</th>
-										<th>id fila</th>
-										<th>fila</th>
-										<th>atendente</th>
-										<th>status</th>
-										<th>guichê</th>
-										<th>inicio atendimento</th>
-										<th>final atendimento</th>
-										<th>senha</th>
-										<th>iniciar</th>
-										<th>aviso</th>
-										<th>finalizar</th>
-									</tr>
-								</thead>
-								<tbody>
-									{atendimento.map(item => <tr className='text-center'>
-										<td>{item.id}</td>
-										<td>{item.datatime}</td>
-										<td>{item.id_das_filas}</td>
-										<td>{item.nome_fila}</td>
-										<td>{item.atendente}</td>	
-										<td>{item.status1}</td>
-										<td>{item.Guichê}</td>
-										<td>{item.datainicio}</td>
-										<td>{item.datafinal}</td>						
- 										<td>{item.contador}</td>
+							<div className='table-responsive'>
+								<table className='table'>
+									<thead>
+										<tr className='text-center'>
+											<th scope="col">id</th>
+											<th scope="col">time</th>
+											<th scope="col">id fila</th>
+											<th scope="col">fila</th>
+											<th scope="col">atendente</th>
+											<th scope="col">status</th>
+											<th scope="col">guichê</th>
+											<th scope="col">inicio atendimento</th>
+											<th scope="col">final atendimento</th>
+											<th scope="col">senha</th>
+											<th scope="col">iniciar</th>
+											<th scope="col">aviso</th>
+											<th scope="col">finalizar</th>
+										</tr>
+									</thead>
+									<tbody>
+										{atendimento.map(item => <tr className='text-center'>
+											<td>{item.id}</td>
+											<td>{item.datatime}</td>
+											<td>{item.id_das_filas}</td>
+											<td>{item.nome_fila}</td>
+											<td>{item.atendente}</td>	
+											<td>{item.status1}</td>
+											<td>{item.Guichê}</td>
+											<td>{item.datainicio}</td>
+											<td>{item.datafinal}</td>						
+ 											<td>{item.contador}</td>
 
-										{atendentess.map(vamo => 
-										<>
-										<td>
-											<button disabled={item.datainicio != null} className='btn btn-primary boa' onClick={() => {Guiche(item.id); ateInicio(item.id, vamo.atendente); iniciar(vamo.id_dos_atendentes); emAtendimento(item.id) } } type='submit'>Iniciar</button>											
-										</td>
-										<td>
-											<button className='btn btn-warning' onClick={() => {avisa(item.id)}}>Alerta</button>
-										</td>
-										<td><button disabled={item.datainicio == null} className='btn btn-danger' onClick={() => {ateFinal(item.id, vamo.atendente); finalizar(vamo.id_dos_atendentes); atendido(item.id); setModal(false) } } type='submit'>Finalizar</button></td>	
-										</>
-										)}
+											{atendentess.map(vamo => 
+											<>
+											<td>
+												<button disabled={item.datainicio != null} className='btn btn-primary boa' onClick={() => {Guiche(item.id); ateInicio(item.id, vamo.atendente); iniciar(vamo.id_dos_atendentes); emAtendimento(item.id) } } type='submit'>Iniciar</button>											
+											</td>
+											<td>
+												<button className='btn btn-warning' onClick={() => {avisa(item.id)}}>Alerta</button>
+											</td>
+											<td><button disabled={item.datainicio == null} className='btn btn-danger' onClick={() => {ateFinal(item.id, vamo.atendente); finalizar(vamo.id_dos_atendentes); atendido(item.id); setModal(false) } } type='submit'>Finalizar</button></td>	
+											</>
+											)}
 
-									</tr>) }
-								</tbody> 
-							</table>
+										</tr>) }
+									</tbody> 
+								</table>
+							</div>
 
 							<button className='btn btn-danger form-control mb-1' onClick={() => setModal(false) }>Voltar</button>	
 							</div>					
