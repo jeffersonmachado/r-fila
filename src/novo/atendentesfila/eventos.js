@@ -14,7 +14,7 @@ function Eventos(){
   	let result = [];
 
 	useEffect(() => {
-		fetch(configData.API_URL+"/api/atendentes_fila")
+		fetch(configData.api.URL+"/api/atendentes_fila")
       	.then(res => res.json())
       	.then(
         (result) => {

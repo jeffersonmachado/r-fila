@@ -12,7 +12,7 @@ async function retorno(atendentes,filas) {
 		  filas[index].id_atendente = element_atendentes.id_dos_atendentes;
 		  filas[index].atendente = element_atendentes.atendente;
 		  
-		  var url = configData.API_URL+"/api/atendentes_fila?$filter=id_filas eq "+element_filas.id_das_filas+" and id_atendentes eq "+element_atendentes.id_dos_atendentes;
+		  var url = configData.api.URL+"/api/atendentes_fila?$filter=id_filas eq "+element_filas.id_das_filas+" and id_atendentes eq "+element_atendentes.id_dos_atendentes;
 		  console.log("url",url);
 		  try {
 
@@ -44,7 +44,7 @@ function Logar(){
 	useEffect( async () => {
 		var ret_fila,ret_atendentes,ret_af;
 		try {
-			var url = configData.API_URL+"/api/fila";
+			var url = configData.api.URL+"/api/fila";
 			var fetchResponse  = await fetch(url);
 			ret_fila = await fetchResponse.json();
 			console.log("ret_fila",ret_fila);
@@ -52,7 +52,7 @@ function Logar(){
 			console.log("error",e);
 		}
 		try {
-			var url = configData.API_URL+"/api/atendentes";
+			var url = configData.api.URL+"/api/atendentes";
 			var fetchResponse  = await fetch(url);
 			ret_atendentes = await fetchResponse.json();
 			console.log("ret_atendentes",ret_atendentes);

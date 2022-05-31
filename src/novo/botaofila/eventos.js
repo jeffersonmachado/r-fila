@@ -21,10 +21,10 @@ function Loko(){
 
     var senha = useState(senha);
     
-    console.log("aqui", configData.API_URL );
+    console.log("aqui", configData.api.URL );
     
  useEffect(() => {                                                          
-   fetch(configData.API_URL+"/api/fila?$orderby=ordem")
+   fetch(configData.api.URL+"/api/fila?$orderby=ordem")
       .then(res => res.json())
       .then(
         (result) => {
@@ -61,7 +61,7 @@ function Loko(){
     
   async function contador2(id_fila, nome_da_fila, senha) {
     try {
-      var url = configData.API_URL+"/api/fila?$filter=id_fila eq " + id_fila;
+      var url = configData.api.URL+"/api/fila?$filter=id_fila eq " + id_fila;
       console.log("url",url);
       var fetchResponse  = await fetch(url);
       const ultimo = await fetchResponse.json();
@@ -78,7 +78,7 @@ function Loko(){
         })
       }
       printIframe(senha);
-      fetch(configData.API_URL+"/api/fila/" + id_fila, bomba)
+      fetch(configData.api.URL+"/api/fila/" + id_fila, bomba)
       .then(res => res.json())
       .then(
       (result) => {
@@ -93,7 +93,7 @@ function Loko(){
           })
         }
       
-        fetch(configData.API_URL+"/api/atendimento", mlk)
+        fetch(configData.api.URL+"/api/atendimento", mlk)
           .then(res => res.json())
           .then(
             (result) => {

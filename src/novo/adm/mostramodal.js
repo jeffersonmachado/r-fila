@@ -16,7 +16,7 @@ async function retorno(atendentes,filas) {
         filas[index].atendente = element_atendentes.atendente;
         filas[index].id_dos_atendentes = element_atendentes.id_dos_atendentes;
         
-        var url = configData.API_URL+"/api/atendentes_fila?$filter=id_filas eq "+element_filas.id_das_filas+" and id_atendentes eq "+element_atendentes.id_dos_atendentes;
+        var url = configData.api.URL+"/api/atendentes_fila?$filter=id_filas eq "+element_filas.id_das_filas+" and id_atendentes eq "+element_atendentes.id_dos_atendentes;
         console.log("url",url);
         try {
 
@@ -48,7 +48,7 @@ function MostraModal({id_dos_atendentes, atendente}){
 
         var ret_fila,ret_atendentes,ret_af;
         try {
-            var url = configData.API_URL+"/api/fila";
+            var url = configData.api.URL+"/api/fila";
             var fetchResponse  = await fetch(url);
             ret_fila = await fetchResponse.json();
             console.log("ret_fila",ret_fila);
@@ -56,7 +56,7 @@ function MostraModal({id_dos_atendentes, atendente}){
             console.log("error",e);
         }
         try {
-            var url = configData.API_URL+"/api/atendentes?$filter=id_dos_atendentes eq "+id_dos_atendentes;
+            var url = configData.api.URL+"/api/atendentes?$filter=id_dos_atendentes eq "+id_dos_atendentes;
             var fetchResponse  = await fetch(url);
             ret_atendentes = await fetchResponse.json();
             atendente = ret_atendentes.atendente;
@@ -96,7 +96,7 @@ function MostraModal({id_dos_atendentes, atendente}){
                         })
                     }
             console.log("opa",opa);
-                    fetch(configData.API_URL+"/api/atendentes_fila", opa)
+                    fetch(configData.api.URL+"/api/atendentes_fila", opa)
                         .then(res => res.json())
                           .then(
                         (result) => {

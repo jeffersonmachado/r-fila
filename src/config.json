@@ -1,5 +1,5 @@
 {
-"api":{"API_URL":"http://localhost:4001"},
+"api":{"URL":"http://localhost:4001"},
 "tela":{
     "cor1":"red",
     "cor1_fundo":"black",
@@ -7,15 +7,23 @@
     "cor2_fundo":"white"
 },
 "botao_filas":{"tamanho":60},
-"atendimento_colunas": {"id":"ID",
-"Guichê":"Guichê",
-"id_das_filas":"ID DAS FILAS",
-"datatime":"DATA E HORA",
-"nome_fila":"NOME DA FILA",
-"atendente":"ATENDENTE",
-"status1":"STATUS",
-"datainicio":"INICIO DE ATENDIMENTO",
-"datafinal":"FINAL DE ATENDIMENTO",
-"contador":"SENHA DA FILA"
-}
+"atendimento_colunas": 
+    {"id":"ID",
+    "guiche":"Guichê",
+    "id_das_filas":"ID DAS FILAS",
+    "datatime":"DATA E HORA",
+    "nome_fila":"NOME DA FILA",
+    "atendente":"ATENDENTE",
+    "status1":"STATUS",
+    "datainicio":"INICIO DE ATENDIMENTO",
+    "datafinal":"FINAL DE ATENDIMENTO",
+    "contador":"SENHA DA FILA"
+    },
+"database":{
+    "name":"jefferson",
+    "user":"root",
+    "password":"resu1@@dba",
+    "host":"localhost",
+    "port":3306
+    }
 }

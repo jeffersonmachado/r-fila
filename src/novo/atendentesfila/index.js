@@ -39,7 +39,7 @@ function deletar(){
 			})
 		}
 
-		fetch(configData.API_URL+"/api/atendentes_fila/" + id, apa)
+		fetch(configData.api.URL+"/api/atendentes_fila/" + id, apa)
 		.then(resultado => {
     		setMsg('correto')
     	}).catch(erro => {
@@ -73,7 +73,7 @@ function Editar(){
 
 	}
 
-	fetch(configData.API_URL+"/api/atendentes_fila/" + id, mano)
+	fetch(configData.api.URL+"/api/atendentes_fila/" + id, mano)
 		.then(resultado => {
     	setMsg2('correto');
     }).catch(erro => {

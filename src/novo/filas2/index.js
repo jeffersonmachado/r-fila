@@ -22,7 +22,7 @@ console.log(id_dos_atendentes,id_das_filas);
 			})
 		}
 
-		fetch(configData.API_URL+"/api/atendentes_fila", opa)
+		fetch(configData.api.URL+"/api/atendentes_fila", opa)
 			.then(res => res.json())
       		.then(
         	(result) => {

@@ -6,7 +6,7 @@ import Css from './main.css';
 
 
 function Tela(){
-  const [eventSource, setEventSource] = useState(() => new EventSource(configData.API_URL+"/countdown"));
+  const [eventSource, setEventSource] = useState(() => new EventSource(configData.api.URL+"/countdown"));
   const [dadosTela, setDadosTela] = useState({});
   const [status, setStatus] = useState("Desconetado");
   const [bgColor, setBgColor] = useState("#2d405f");

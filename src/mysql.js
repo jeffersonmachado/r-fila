@@ -10,11 +10,15 @@ eventEmitter.setMaxListeners(0);
 //app.use(express.logger());
 app.use(bodyParser.json());
 var mysql      = require('mysql');
+// import configData from "../../config.json";
+const fs = require('fs');
+const configData  = JSON.parse(fs.readFileSync('./config.json'));
+console.log("configData",configData);
 var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'resu1@@dba',
-  database : 'jefferson',
+  host     : configData.database.host,
+  user     : configData.database.user,
+  password : configData.database.password,
+  database : configData.database.name,
   port : 3306
 });
 

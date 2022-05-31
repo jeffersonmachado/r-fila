@@ -19,7 +19,7 @@ function Logar(){
 
 
 	function  ValidarUsuario(){
-		var url=configData.API_URL+"/api/adm?$filter=adms eq '"+email+"' and senha eq '"+password+"'";
+		var url=configData.api.URL+"/api/adm?$filter=adms eq '"+email+"' and senha eq '"+password+"'";
 			console.log(url);
 		fetch(url)
 			.then(res => res.json())

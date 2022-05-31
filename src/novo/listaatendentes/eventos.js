@@ -36,7 +36,7 @@ function Logar(){
 
 	useEffect( async () => {
 
-    fetch(configData.API_URL+"/api/atendentes")
+    fetch(configData.api.URL+"/api/atendentes")
     .then(res => res.json())
     .then(
       (result) => {
@@ -66,7 +66,7 @@ function mandar(id_dos_atendentes, id_fila){
 					})
 				}
 		
-				fetch(configData.API_URL+"/api/atendentes_fila/", opa)
+				fetch(configData.api.URL+"/api/atendentes_fila/", opa)
 					.then(res => res.json())
 					.then(
 					(result) => {
@@ -96,7 +96,7 @@ function jogar(){
   
     }
   
-    fetch(configData.API_URL+"/api/atendentes", slk)
+    fetch(configData.api.URL+"/api/atendentes", slk)
       .then(res => res.json())
       .then(
         (result) => {
@@ -112,7 +112,7 @@ function jogar(){
 
 function Editar(id_dos_atendentes){
   console.log("Editar","id_dos_atendentes",id_dos_atendentes);
-  var url = configData.API_URL+"/api/atendentes?$filter=id_dos_atendentes eq "+id_dos_atendentes;
+  var url = configData.api.URL+"/api/atendentes?$filter=id_dos_atendentes eq "+id_dos_atendentes;
   fetch(url)
   .then(res => res.json())
   .then(
@@ -132,7 +132,7 @@ function Editar(id_dos_atendentes){
 
 function Filas(id_dos_atendentes, nome_da_fila){
   console.log("Editar","id_dos_atendentes" + id_dos_atendentes);
-  var url = configData.API_URL+"/api/atendentes?$filter=id_dos_atendentes eq "+id_dos_atendentes;
+  var url = configData.api.URL+"/api/atendentes?$filter=id_dos_atendentes eq "+id_dos_atendentes;
   fetch(url)
   .then(res => res.json())
   .then(
@@ -164,7 +164,7 @@ function GravarEditar(id_dos_atendentes, nome_da_fila){
       })
     }
 
-  fetch(configData.API_URL+"/api/atendentes/" + id_dos_atendentes, jucaa)
+  fetch(configData.api.URL+"/api/atendentes/" + id_dos_atendentes, jucaa)
     .then(res => res.json())
     .then(
     (result) => {
@@ -193,7 +193,7 @@ function Deletar(id_dos_atendentes){
   }
 
 
-    var url = configData.API_URL+"/api/atendentes?$filter=id_dos_atendentes eq "+id_dos_atendentes;
+    var url = configData.api.URL+"/api/atendentes?$filter=id_dos_atendentes eq "+id_dos_atendentes;
     fetch(url)
     .then(res => res.json())
     .then(
@@ -225,7 +225,7 @@ function GravarDeletar(id_dos_atendentes){
 }
 
 
-fetch(configData.API_URL+"/api/atendentes/" + id_dos_atendentes, juca)
+fetch(configData.api.URL+"/api/atendentes/" + id_dos_atendentes, juca)
   .then(res => res.json())
   .then(
   (result) => {

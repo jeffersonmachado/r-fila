@@ -28,7 +28,7 @@ function Adms(){
 
     useEffect( async () => {
 
-        fetch(configData.API_URL+"/api/adm")
+        fetch(configData.api.URL+"/api/adm")
         .then(res => res.json())
         .then(
           (result) => {
@@ -58,7 +58,7 @@ function Adms(){
 
         }
 
-        fetch(configData.API_URL+"/api/adm", lisca)
+        fetch(configData.api.URL+"/api/adm", lisca)
             .then(res => res.json())
             .then(
             (result) => {
@@ -74,7 +74,7 @@ function Adms(){
     
     function Editar(id_adm){
         console.log("Editar","id_adm",id_adm);
-        var url = configData.API_URL+"/api/adm?$filter=id_adm eq "+id_adm;
+        var url = configData.api.URL+"/api/adm?$filter=id_adm eq "+id_adm;
         fetch(url)
         .then(res => res.json())
         .then(
@@ -106,7 +106,7 @@ function Adms(){
                 })
             }
       
-        fetch(configData.API_URL+"/api/adm/" + id_adm, jucaa)
+        fetch(configData.api.URL+"/api/adm/" + id_adm, jucaa)
           .then(res => res.json())
           .then(
           (result) => {
@@ -134,7 +134,7 @@ function Adms(){
         }
       
       
-          var url = configData.API_URL+"/api/adm?$filter=id_adm eq "+id_adm;
+          var url = configData.api.URL+"/api/adm?$filter=id_adm eq "+id_adm;
           fetch(url)
           .then(res => res.json())
           .then(
@@ -166,7 +166,7 @@ function Adms(){
       }
       
       
-      fetch(configData.API_URL+"/api/adm/" + id_adm, juca)
+      fetch(configData.api.URL+"/api/adm/" + id_adm, juca)
         .then(res => res.json())
         .then(
         (result) => {

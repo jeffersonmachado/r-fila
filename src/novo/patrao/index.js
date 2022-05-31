@@ -41,7 +41,7 @@ function Patrao(bora, id_dos_atendentes, id_atendimento){
 	useEffect(async () => {
 		console.log("atendente",atendente);
 		var id_atendentes = '2';
-		var url = configData.API_URL+"/api/atendentes_fila?$filter=id_atendentes eq " + id_atendentes;
+		var url = configData.api.URL+"/api/atendentes_fila?$filter=id_atendentes eq " + id_atendentes;
 		console.log("url",url);
 		var fetchResponse  = await fetch(url);
 		const filas_do_atendente = await fetchResponse.json();
@@ -59,7 +59,7 @@ function Patrao(bora, id_dos_atendentes, id_atendimento){
 		filtro = filtro.slice(0, -4);
 		filtro+=")";
 		console.log("filtro",filtro);
-		url = configData.API_URL+"/api/atendimento?$filter=status1 ne 'Finalizado' and "+filtro;
+		url = configData.api.URL+"/api/atendimento?$filter=status1 ne 'Finalizado' and "+filtro;
 		console.log("filtrossssssssssssssss",filtro);
 			fetch(url)
 			.then(res => res.json())
@@ -78,7 +78,7 @@ function Patrao(bora, id_dos_atendentes, id_atendimento){
 
 
 function  ValidarUsuario(){
-	var url=configData.API_URL+"/api/atendentes?$filter=atendente eq '"+email+"' and senha eq '"+password+"'";
+	var url=configData.api.URL+"/api/atendentes?$filter=atendente eq '"+email+"' and senha eq '"+password+"'";
 		console.log(url);
 	fetch(url)
 		.then(res => res.json())
@@ -120,7 +120,7 @@ function iniciar(id_dos_atendentes){
 
 	}
 
-	fetch(configData.API_URL+"/api/atendentes/"+ id_dos_atendentes, lola)
+	fetch(configData.api.URL+"/api/atendentes/"+ id_dos_atendentes, lola)
 		.then(res => res.json())
 		.then(
 		(result) => {
@@ -148,7 +148,7 @@ function finalizar(id_dos_atendentes){
 
 	}
 
-	fetch(configData.API_URL+"/api/atendentes/" + id_dos_atendentes, meg)
+	fetch(configData.api.URL+"/api/atendentes/" + id_dos_atendentes, meg)
 		.then(res => res.json())
 		.then(
 		(result) => {
@@ -176,7 +176,7 @@ function pausar(id_dos_atendentes){
 
 	}
 
-	fetch(configData.API_URL+"/api/atendentes/" + id_dos_atendentes, bomba)
+	fetch(configData.api.URL+"/api/atendentes/" + id_dos_atendentes, bomba)
 		.then(res => res.json())
 		.then(
 		(result) => {
@@ -206,14 +206,14 @@ function ateInicio(id, atendente){
 
 	}
 
-	fetch(configData.API_URL+"/api/atendimento/" + id, mm )
+	fetch(configData.api.URL+"/api/atendimento/" + id, mm )
 
 		.then(res => res.json())
 		.then(
 			async (result) => {
 				console.log(result);
 				setCaio(result);
-				var url = configData.API_URL+"/api/atendimento?$filter=id eq " + id;
+				var url = configData.api.URL+"/api/atendimento?$filter=id eq " + id;
 				console.log("url",url);
 				var fetchResponse  = await fetch(url);
 				const dadosFila = await fetchResponse.json();
@@ -235,7 +235,7 @@ function ateInicio(id, atendente){
 			
 				}
 				console.log(url,dadosTela);
-				fetch(configData.API_URL+"/avisa", dadosTela )
+				fetch(configData.api.URL+"/avisa", dadosTela )
 
 				.then(res => res.json())
 				.then(
@@ -275,7 +275,7 @@ function ateFinal(id, atendente){
 		})
 	}
 
-	fetch(configData.API_URL+"/api/atendimento/ " + id, lis)
+	fetch(configData.api.URL+"/api/atendimento/ " + id, lis)
 		.then(res => res.json())
 		.then(
 		(result) => {
@@ -306,7 +306,7 @@ function emAtendimento(id){
 
 	}
 
-	fetch(configData.API_URL+"/api/atendimento/" + id, mc)
+	fetch(configData.api.URL+"/api/atendimento/" + id, mc)
 		.then(res => res.json())
 		.then(
 		(result) => {
@@ -335,7 +335,7 @@ function Guiche(id){
 
 	}
 
-	fetch(configData.API_URL+"/api/atendimento/" + id, mc)
+	fetch(configData.api.URL+"/api/atendimento/" + id, mc)
 		.then(res => res.json())
 		.then(
 		(result) => {
@@ -370,7 +370,7 @@ function atendido(id){
 
 	}
 
-	fetch(configData.API_URL+"/api/atendimento/" + id, mcs)
+	fetch(configData.api.URL+"/api/atendimento/" + id, mcs)
 		.then(res => res.json())
 		.then(
 		(result) => {
@@ -398,14 +398,14 @@ function avisa(id){
 
 	}
 
-	fetch(configData.API_URL+"/api/atendimento/" + id, mm )
+	fetch(configData.api.URL+"/api/atendimento/" + id, mm )
 
 		.then(res => res.json())
 		.then(
 			async (result) => {
 				console.log(result);
 				setCaio(result);
-				var url = configData.API_URL+"/api/atendimento?$filter=id eq " + id;
+				var url = configData.api.URL+"/api/atendimento?$filter=id eq " + id;
 				console.log("url",url);
 				var fetchResponse  = await fetch(url);
 				const dadosFila = await fetchResponse.json();
@@ -426,7 +426,7 @@ function avisa(id){
 			
 				}
 				console.log(url,dadosTela);
-				fetch(configData.API_URL+"/avisa", dadosTela )
+				fetch(configData.api.URL+"/avisa", dadosTela )
 
 				.then(res => res.json())
 				.then(
