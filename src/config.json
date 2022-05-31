@@ -6,7 +6,7 @@
     "cor2":"blue",
     "cor2_fundo":"white"
 },
-"botao_ilas":{"tamanho":60},
+"botao_filas":{"tamanho":60},
 "atendimento_colunas": {"id":"ID",
 "Guichê":"Guichê",
 "id_das_filas":"ID DAS FILAS",
