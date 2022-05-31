@@ -24,7 +24,7 @@ function Loko(){
     console.log("aqui", configData.API_URL );
     
  useEffect(() => {                                                          
-   fetch(configData.API_URL+"/api/fila")
+   fetch(configData.API_URL+"/api/fila?$orderby=ordem")
       .then(res => res.json())
       .then(
         (result) => {
@@ -137,8 +137,8 @@ function Loko(){
             <>
               <div className="d-grid gap-2">
                 <Button variant="primary" 
-                  style={{height: 80}}
-                  style={{fontSize: 80}}
+                  style={{height: 60}}
+                  style={{fontSize: 60}}
                   size="lg" 
                   className="w-100 mt-3" 
                   onClick={() => {contador2(item.id_fila, item.id, item.nome_da_fila, item.senha)} }>

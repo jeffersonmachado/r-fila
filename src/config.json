@@ -1,7 +1,21 @@
 {
-"API_URL":"http://localhost:4001",
-"cor1":"red",
-"cor1_fundo":"black",
-"cor2":"blue",
-"cor2_fundo":"white"
+"api":{"API_URL":"http://localhost:4001"},
+"tela":{
+    "cor1":"red",
+    "cor1_fundo":"black",
+    "cor2":"blue",
+    "cor2_fundo":"white"
+},
+"botao_ilas":{"tamanho":60},
+"atendimento_colunas": {"id":"ID",
+"Guichê":"Guichê",
+"id_das_filas":"ID DAS FILAS",
+"datatime":"DATA E HORA",
+"nome_fila":"NOME DA FILA",
+"atendente":"ATENDENTE",
+"status1":"STATUS",
+"datainicio":"INICIO DE ATENDIMENTO",
+"datafinal":"FINAL DE ATENDIMENTO",
+"contador":"SENHA DA FILA"
+}
 }

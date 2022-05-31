@@ -6,14 +6,14 @@ var express = require('express'),
 var bodyParser = require('body-parser');
 var events = require('events');
 var eventEmitter = new events.EventEmitter();
-
+eventEmitter.setMaxListeners(0);
 //app.use(express.logger());
 app.use(bodyParser.json());
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : '',
+  password : 'resu1@@dba',
   database : 'jefferson',
   port : 3306
 });
