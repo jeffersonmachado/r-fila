@@ -33,6 +33,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-textfit": "^1.1.1",
+    "react-tinder-card": "^1.4.5",
     "react-to-print": "^2.14.5",
     "react-use-audio-player": "^1.2.5",
     "react-use-websocket": "^3.0.0",

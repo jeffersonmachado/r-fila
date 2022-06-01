@@ -1,29 +1,30 @@
 {
-"api":{"URL":"http://localhost:4001"},
-"tela":{
-    "cor1":"red",
-    "cor1_fundo":"black",
-    "cor2":"blue",
-    "cor2_fundo":"white"
-},
-"botao_filas":{"tamanho":60},
-"atendimento_colunas": 
-    {"id":"ID",
-    "guiche":"Guichê",
-    "id_das_filas":"ID DAS FILAS",
-    "datatime":"DATA E HORA",
-    "nome_fila":"NOME DA FILA",
-    "atendente":"ATENDENTE",
-    "status1":"STATUS",
-    "datainicio":"INICIO DE ATENDIMENTO",
-    "datafinal":"FINAL DE ATENDIMENTO",
-    "contador":"SENHA DA FILA"
+    "api":{"URL":"http://localhost:4001"},
+    "tela":{
+        "cor1":"red",
+        "cor1_fundo":"black",
+        "cor2":"blue",
+        "cor2_fundo":"white"
     },
-"database":{
-    "name":"jefferson",
-    "user":"root",
-    "password":"resu1@@dba",
-    "host":"localhost",
-    "port":3306
+    "botao_filas":{"tamanho":60},
+    "atendimento_colunas": 
+        {"id":"id",
+        "datatime":"data e hora",
+        "id_das_filas":"id fila",
+        "atendente":"atendente",
+        "datainicio":"inicio atendimento",
+        "datafinal":"final atendimento",  
+        "status1":"status",
+        "contador":"senha fila",  
+        "Guichê":"guichê",
+        "nome_fila":"nome fila",
+        "alerta":"aviso"
+        },
+    "database":{
+        "name":"jefferson",
+        "user":"root",
+        "password":"resu1@@dba",
+        "host":"localhost",
+        "port":3306
+        }
     }
-}

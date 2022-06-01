@@ -73,9 +73,7 @@ function Patrao(bora, id_dos_atendentes, id_atendimento){
 				setError(error);
 			}
 			)
-
 		},[caio]);
-
 
 function  ValidarUsuario(){
 	var url=configData.api.URL+"/api/atendentes?$filter=atendente eq '"+email+"' and senha eq '"+password+"'";
@@ -482,35 +480,17 @@ function avisa(id){
 								<table className='table'>
 									<thead>
 										<tr className='text-center'>
-											<th scope="col">id</th>
-											<th scope="col">time</th>
-											<th scope="col">id fila</th>
-											<th scope="col">fila</th>
-											<th scope="col">atendente</th>
-											<th scope="col">status</th>
-											<th scope="col">guichê</th>
-											<th scope="col">inicio atendimento</th>
-											<th scope="col">final atendimento</th>
-											<th scope="col">senha</th>
-											<th scope="col">iniciar</th>
-											<th scope="col">aviso</th>
-											<th scope="col">finalizar</th>
+										{ Object.keys(configData.atendimento_colunas).map((key) => (
+											<th scope="col">{configData.atendimento_colunas[key]}</th>
+										))}
 										</tr>
 									</thead>
 									<tbody>
 										{atendimento.map(item => <tr className='text-center'>
-											<td>{item.id}</td>
-											<td>{item.datatime}</td>
-											<td>{item.id_das_filas}</td>
-											<td>{item.nome_fila}</td>
-											<td>{item.atendente}</td>	
-											<td>{item.status1}</td>
-											<td>{item.Guichê}</td>
-											<td>{item.datainicio}</td>
-											<td>{item.datafinal}</td>						
- 											<td>{item.contador}</td>
-
-											{atendentess.map(vamo => 
+										{ Object.keys(configData.atendimento_colunas).map((key) => (
+											<td>{item[key]}</td>
+										))}
+										{atendentess.map(vamo => 
 											<>
 											<td>
 												<button disabled={item.datainicio != null} className='btn btn-primary boa' onClick={() => {Guiche(item.id); ateInicio(item.id, vamo.atendente); iniciar(vamo.id_dos_atendentes); emAtendimento(item.id) } } type='submit'>Iniciar</button>											
@@ -521,7 +501,6 @@ function avisa(id){
 											<td><button disabled={item.datainicio == null} className='btn btn-danger' onClick={() => {ateFinal(item.id, vamo.atendente); finalizar(vamo.id_dos_atendentes); atendido(item.id); setModal(false) } } type='submit'>Finalizar</button></td>	
 											</>
 											)}
-
 										</tr>) }
 									</tbody> 
 								</table>
