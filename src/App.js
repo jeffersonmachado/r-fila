@@ -11,6 +11,7 @@ import Filas2 from './novo/filas2/eventos.js';
 import Adm from './novo/adm/index.js';
 import Tela from './novo/tela/index.js';
 import impressao from './novo/impressao/index.js';
+import Config from './novo/config/config.js';
 
 
 function App2(){
@@ -26,6 +27,7 @@ function App2(){
 				<Route exact path='/Adm' component={Adm} />
 				<Route exact path='/Tela' component={Tela} />
 				<Route exact path='/impressao' component={impressao} />
+				<Route exact path='/Config' component={Config} />
     		</Router> 
 
 		);

@@ -137,8 +137,7 @@ function Loko(){
             <>
               <div className="d-grid gap-2">
                 <Button variant="primary" 
-                  style={{height: 60}}
-                  style={{fontSize: 60}}
+                  style={configData.botao_filas}
                   size="lg" 
                   className="w-100 mt-3" 
                   onClick={() => {contador2(item.id_fila, item.id, item.nome_da_fila, item.senha)} }>

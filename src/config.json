@@ -6,7 +6,9 @@
         "cor2":"blue",
         "cor2_fundo":"white"
     },
-    "botao_filas":{"tamanho":60},
+
+    "botao_filas":{"Tamanho Botão Fila":50},
+
     "atendimento_colunas": 
         {"id":"id",
         "datatime":"data e hora",
@@ -20,6 +22,7 @@
         "nome_fila":"nome fila",
         "alerta":"aviso"
         },
+        
     "database":{
         "name":"jefferson",
         "user":"root",
