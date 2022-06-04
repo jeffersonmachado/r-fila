@@ -10,7 +10,7 @@ eventEmitter.setMaxListeners(0);
 //app.use(express.logger());
 app.use(bodyParser.json());
 var mysql      = require('mysql');
-// import configData from "../../config.json";
+// import configData from "../../../public/config.json";
 const fs = require('fs');
 const configData  = JSON.parse(fs.readFileSync('./config.json'));
 console.log("configData",configData);
