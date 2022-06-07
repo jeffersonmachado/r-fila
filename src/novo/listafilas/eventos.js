@@ -3,6 +3,7 @@ import Navbar from '../../navbar/boas.js';
 import {Link} from 'react-router-dom';
 import Css from './eventos.css';
 import Modal from 'react-modal';
+import configData from "../../config.json";
 
 function Eventosfila(){
   const [modalisopenn, setModalIsOpenn] = useState(false);
@@ -189,12 +190,11 @@ function GravarDeletar(id_fila){
               <table className='table'>
                 <thead>
                   <tr className='text-center'>
-                    <th>ID</th>
-                    <th>ORDEM</th>
-                    <th>NOME DA FILA</th>
-                    <th>SENHA</th>
-                    <th>EDITAR</th>
-                    <th>DELETAR</th>
+                  { Object.keys(configData.filas_colunas).map((key) => (
+											<th scope="col">{configData.filas_colunas[key]}</th>
+										))}
+                      <th>EDITAR</th>
+                      <th>DELETAR</th>
                   </tr>
                 </thead>
                 <tbody>

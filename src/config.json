@@ -22,6 +22,27 @@
         "nome_fila":"nome fila",
         "alerta":"aviso"
         },
+
+    "filas_colunas":
+        {"id_fila":"ID",
+        "ordem":"ORDEM",
+        "nome_da_fila":"NOME DA FILA",
+        "senha":"SENHA"
+        },
+
+    "atendentes_colunas":
+        {"id_dos_atendentes":"ID",
+        "atendente":"ATENDENTE",
+        "senha":"SENHA",
+        "status2":"STATUS",
+        "filas":"FILAS"    
+        }, 
+        
+    "adm_colunas":
+        {"id_adm":"ID",
+        "adms":"ADM",
+        "senha":"SENHA"
+        },    
         
     "database":{
         "name":"jefferson",

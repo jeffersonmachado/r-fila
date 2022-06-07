@@ -191,9 +191,9 @@ function Adms(){
             <table className='table'>
                 <thead>
                     <tr className='text-center'>
-                        <th>ID</th>
-                        <th>ADM</th>
-                        <th>SENHA</th>
+                    { Object.keys(configData.adm_colunas).map((key) => (
+						<th>{configData.adm_colunas[key]}</th>
+					))}
                         <th>EDITAR</th>
                         <th>DELETAR</th>
                     </tr>

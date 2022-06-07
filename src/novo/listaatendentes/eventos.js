@@ -259,11 +259,9 @@ fetch(configData.api.URL+"/api/atendentes/" + id_dos_atendentes, juca)
         <table className='table'>
           <thead>
             <tr className='text-center'>
-              <th>ID</th>
-              <th>ATENDENTE</th>
-              <th>SENHA</th>
-              <th>STATUS</th>
-              <th>Fila</th>
+            { Object.keys(configData.atendentes_colunas).map((key) => (
+							<th>{configData.atendentes_colunas[key]}</th>
+						))}
               <th>EDITAR</th>
               <th>DELETAR</th>
             </tr>
